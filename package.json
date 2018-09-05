@@ -1,0 +1,29 @@
+{
+  "name": "trans-to-zhtw",
+  "version": "0.0.3",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "trans-to-zhTW": "bin/index"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./index.js",
+    "dev": "cross-env NODE_ENV=development nodemon --watch 'index.js' --exec npm start"
+  },
+  "author": "2426460095@qq.com",
+  "license": "ISC",
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "nodemon": "^1.18.3"
+  },
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "chinese_convert": "^1.0.8",
+    "fs-extra": "^7.0.0"
+  },
+  "keywords": [
+    "简体",
+    "繁体"
+  ]
+}

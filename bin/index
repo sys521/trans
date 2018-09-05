@@ -1,0 +1,30 @@
+#!/usr/bin/env node --harmony
+'use strict'
+// 定义脚手架的文件路径
+process.env.NODE_PATH = __dirname + '/../node_modules/'
+
+const rootPath = process.cwd()
+const path = require('path')
+const myEvents = require('../lib/event')
+const Translate = require('../index')
+// 检测当前路径有没有translate-config.js
+let translateConfig = {}
+try {
+  translateConfig = require(path.join(rootPath, './translate-config.js'))
+} catch (err) {
+  console.log(err)
+  myEvents.emit('warn', '未找到当前文件下  "translate-config.js"   配置文件 \n 使用默认配置..... \n 尝试转译读取当前路径下的 src 文件')
+}
+// 合并配置
+const defaultConfig = {
+  source: path.join(rootPath, './src'),
+  dist: path.join(rootPath, './src-translate-copy'),
+  exclude: {
+    file: [],
+    dir: []
+  },
+  dict: {}
+}
+const config = Object.assign({}, defaultConfig, translateConfig)
+
+const translate = new Translate(config)
